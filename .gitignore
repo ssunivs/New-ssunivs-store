@@ -10,3 +10,5 @@ venvs
 ### Secrets ###
 .env
 store_Flask/ssunivs/dbsetting.py
+migrations/env.py
+migrations/alembic.ini
