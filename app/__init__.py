@@ -2,7 +2,7 @@ from flask import Flask
 from flask_migrate import Migrate
 from flask_sqlalchemy import SQLAlchemy
 
-import config as config
+import config
 
 db = SQLAlchemy()
 migrate = Migrate()

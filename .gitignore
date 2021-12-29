@@ -6,3 +6,6 @@
 
 ### virtualenv
 venvs
+
+### Secrets ###
+.env
