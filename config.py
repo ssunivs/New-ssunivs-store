@@ -1,4 +1,4 @@
-from ssunivs.dbsetting import db as dbsetting
+from app.dbsetting import db as dbsetting
 
 db = {
     'user': dbsetting['user'],
