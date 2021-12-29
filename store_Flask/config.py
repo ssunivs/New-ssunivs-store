@@ -1,4 +1,4 @@
-from .db import db as dbsetting
+from .ssunivs.dbsetting import db as dbsetting
 db = {
     'user'     :  dbsetting['user'],
     'password' :  dbsetting['password'],
@@ -6,4 +6,4 @@ db = {
     'port'     :  dbsetting['port'],
     'database' : dbsetting['database']
 }
-DB_URL = f"mysql+mysqlconnector://{db['user']}:{db['password']}@{db['host']}:{db['port']}/{db['database']}?charset=utf8" 
+SQLALCHEMY_DATABASE_URL = "mysql://{db['user']}:{db['password']}@{db['host']}:{db['port']}/{db['database']}?charset=utf8" 
