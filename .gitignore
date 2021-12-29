@@ -1,4 +1,11 @@
+### PyCharm IDEA ###
+.idea/
 
-venvs/store_Flask.cmd
+### VS Code ###
+.vscode/
+
+### virtualenv
 venvs
-db.py
+
+### Secrets ###
+.env
