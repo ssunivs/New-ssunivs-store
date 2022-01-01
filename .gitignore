@@ -9,8 +9,8 @@ venvs
 
 ### Secrets ###
 .env
-store_Flask/ssunivs/dbsetting.py
-.DS_Store
 
 ### MISC ###
 migrations/
+.DS_Store
+**/__pycache__/
