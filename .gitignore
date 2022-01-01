@@ -9,13 +9,8 @@ venvs
 
 ### Secrets ###
 .env
-store_Flask/ssunivs/dbsetting.py
+
+### MISC ###
+migrations/
 .DS_Store
-__pycache__/config.cpython-310.pyc
-app/__pycache__/__init__.cpython-310.pyc
-app/views/__pycache__/__init__.cpython-310.pyc
-app/views/__pycache__/main_views.cpython-310.pyc
-migrations/alembic.ini
-migrations/env.py
-migrations/README
-migrations/script.py.mako
+**/__pycache__/
