@@ -4,11 +4,11 @@ from sqlalchemy.utils.types.choice import ChoiceType
 from exception import NotenoughStockException
 class Goods(db.Model):
     __tablename__="goods"
-    choice=[(u'undergraduate', u'재학생'), (u'graduate', u'졸업생')]
+    choice=[(u'ssuadoll', u'슈아인형'),]
     id=db.Column(db.BigInteger,primary_key=True)
     name=db.Column(db.String(32),unique=True,index=True)
     stock=db.Column(db.Integer)
-    doll_type=db.Column(ChoiceType(choice))
+    goods_type=db.Column(ChoiceType(choice))
 
     def __init__(self,id,name,stock,doll_type):
         self.id=id
