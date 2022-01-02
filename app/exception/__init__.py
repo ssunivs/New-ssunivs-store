@@ -1,1 +1,1 @@
-from . import NotEnoughQ
+from .Not_enough_Stock import NotEnoughStockError

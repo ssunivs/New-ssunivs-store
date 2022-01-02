@@ -1,7 +1,7 @@
 from app import db
 from app.exception.NotEnoughQ import NotenoughStockException
 from sqlalchemy.utils.types.choice import ChoiceType
-from exception import NotenoughStockException
+from exception import NotEnoughStockError
 class Goods(db.Model):
     __tablename__="goods"
     choice=[(u'ssuadoll', u'슈아인형'),]
@@ -22,6 +22,6 @@ class Goods(db.Model):
     
     def reduce_stock(self,amount):
         if self.stock-amount<0:
-            raise NotenoughStockException
+            raise NotEnoughStockError
         else:
             self.stock-=amount
