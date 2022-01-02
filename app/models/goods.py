@@ -1,8 +1,6 @@
 from app import db
 from sqlalchemy.utils.types.choice import ChoiceType
-class NotenoughStock(Exception):
-    def __str__(self) -> str:
-        return "제고는 음수가 될 수 없음"
+from exception.NotEnoughQ import NotenoughStock
 class Goods(db.Model):
     __tablename__="goods"
     choice=[(u'undergraduate', u'재학생'), (u'graduate', u'졸업생')]
@@ -17,17 +15,16 @@ class Goods(db.Model):
         self.stock=stock
         self.doll_type=doll_type
 
-    def modif_stock(self,stock_changed):
-        if stock_changed>0:
-            self.stock+=stock_changed
-        else:
-            try:
-                temp=self.stock+stock_changed
-                if temp<0:
-                    raise NotenoughStock
-                else:
-                    self.stock=temp
-                    return self.stock
-            except NotenoughStock as n:
-                return(n)
+    def add_stock(self,amount):
+        self.stock+=amount
+        return self.stock
     
+    def reduce_stock(self,amount):
+        try:
+            if self.stock-amount<0:
+                raise NotenoughStock
+            else:
+                self.stock-=amount
+        except NotenoughStock as e:
+            print(e)
+            return(e)
