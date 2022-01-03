@@ -1,5 +1,4 @@
 from app import db
-from app.exception.NotEnoughQ import NotenoughStockException
 from sqlalchemy.utils.types.choice import ChoiceType
 from exception import NotEnoughStockError
 class Goods(db.Model):
