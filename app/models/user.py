@@ -7,6 +7,7 @@ class User(db.Model):
     name=db.Column(db.String(6))
     email = db.Column(db.String(64), unique=True, index=True)
     password = db.Column(db.String(128))
+    users_order=db.orm.relationship("order",back_populates="order_customer")
 
     def __init__(self, email, password):
         self.email = email
