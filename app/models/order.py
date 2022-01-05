@@ -23,8 +23,13 @@ class order(db.Model):
     total_price=db.Column(db.BigInteger)
     order_goods_list=sqlalchemy.orm.relationship("order_details",ONETOMANY)
     adress=db.Column(db.String(64))
+    
     def get_total_price(self):
-
+        this_order_goods=self.order_goods_list
+        totalprice=0
+        for good in this_order_goods:
+            totalprice+=(good.price*good.count)
+        return totalprice
 
     #결제관련 정보 추가 
 #주문별 구매 상품 및 수량 테이블
