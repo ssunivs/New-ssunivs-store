@@ -22,7 +22,7 @@ class order(db.Model):
     status=db.Column(Enum(status))
     total_price=db.Column(db.BigInteger)
     order_goods_list=sqlalchemy.orm.relationship("order_details",ONETOMANY)
-    adress=db.Column(db.String(64))
+    adress=db.Column(db.String(64))#composite value?
     
     def get_total_price(self):
         this_order_goods=self.order_goods_list
