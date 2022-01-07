@@ -17,11 +17,11 @@ class status(enum.Enum):
 class order(db.Model):
     __tablename__="purchase"
     id=db.Column(db.String(16),primary_key=True,unique=True)
-    user=sqlalchemy.orm.relationship("User",back_populates="users_order")
+    user=sqlalchemy.orm.relationship("User",back_populates="order_list")
     date_time=db.Column(db.DateTime(timezone=True),default=datetime.datetime.utcnow()+datetime.timedelta(hours=9))
     status=db.Column(Enum(status))
     total_price=db.Column(db.BigInteger)
-    order_goods_list=sqlalchemy.orm.relationship("order_details",ONETOMANY)
+    order_goods_list=sqlalchemy.orm.relationship("order_goods_list",ONETOMANY)
     adress=db.Column(db.String(64))#composite value?
     
     def get_total_price(self):
@@ -36,7 +36,7 @@ class order(db.Model):
 class order_goods(db.Model):
     __tablename__="order_detail"
     id=db.Column(db.BigInteger,primary_key=True)#one(order)-to-many(order_detail)
-    purchase_number=sqlalchemy.orm.relationship("order",MANYTOONE)
+    order_id=sqlalchemy.orm.relationship("order",MANYTOONE)
     goods=sqlalchemy.orm.relationship("Goods")
     count=db.Column(db.Integer)
     price=db.Column(db.BigInteger)
