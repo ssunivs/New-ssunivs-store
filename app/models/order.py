@@ -17,13 +17,15 @@ class status(enum.Enum):
 class order(db.Model):
     __tablename__="purchase"
     id=db.Column(db.String(16),primary_key=True,unique=True)
-    user=sqlalchemy.orm.relationship("User",back_populates="order_list")
+    order_user=sqlalchemy.orm.relationship("User",back_populates="order_list")
     date_time=db.Column(db.DateTime(timezone=True),default=datetime.datetime.utcnow()+datetime.timedelta(hours=9))
     status=db.Column(Enum(status))
     total_price=db.Column(db.BigInteger)
     order_goods_list=sqlalchemy.orm.relationship("order_goods_list",ONETOMANY)
     adress=db.Column(db.String(64))#composite value?
-    
+    shipping=db.Column(sqlalchemy.types.BigInteger)
+    memo=db.Column(db.Text(64))
+    visit_datetime=db.Column(sqlalchemy.types.DATETIME(timezone=True))
     def get_total_price(self):
         this_order_goods=self.order_goods_list
         totalprice=0
