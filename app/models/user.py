@@ -1,5 +1,7 @@
 from app import db, bcrypt
-
+import sqlalchemy.orm as orm
+from sqlalchemy.orm.base import MANYTOMANY
+import sqlalchemy
 
 class User(db.Model):
     __tablename__ = "users"
@@ -7,7 +9,11 @@ class User(db.Model):
     name=db.Column(db.String(6))
     email = db.Column(db.String(64), unique=True, index=True)
     password = db.Column(db.String(128))
-    order_list=db.orm.relationship("order",back_populates="order_customer")
+    order_list=db.orm.relationship("order",back_populates="order_user")
+    user_cart=orm.relationship("cart")
+    user_coupon=orm.relationship("coupon",MANYTOMANY)
+    user_address=orm.relationship("address")
+    phone=db.Column(db.String(16))
 
     def __init__(self, email, password):
         self.email = email

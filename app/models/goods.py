@@ -8,6 +8,8 @@ class Goods(db.Model):
     name=db.Column(db.String(32),unique=True,index=True)
     stock=db.Column(db.Integer)
     goods_type=db.Column(ChoiceType(choice))
+    price=db.Column(db.BigInteger)
+    discount=db.Column(db.BigInteger)
 
     def __init__(self,id,name,stock,doll_type):
         self.id=id
